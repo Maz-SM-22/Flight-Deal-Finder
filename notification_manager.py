@@ -5,12 +5,12 @@ import smtplib
 class NotificationManager:
     
     def __init__(self):
-        self.account_sid = 'AC2df22e120ee546ad575c54743b48e54f'
-        self.auth_token = '125685f29fba9d8e554e55f7d65b01b1'
-        self.number = '+19062845121'
+        self.account_sid = os.environ['TWILIO_ACCOUNT_SID']
+        self.auth_token = os.environ['TWILIO_AUTH_TOKEN']
+        self.number = os.environ['TWILIO_NUMBER']
         self.client = Client(self.account_sid, self.auth_token)
-        self.gmail = 'pythontest.msmickersgill@gmail.com'
-        self.password = 'M0nty22!'
+        self.gmail = os.environ['GMAIL_ADDRESS']
+        self.password = os.environ['GMAIL_PASSWORD']
 
     def create_notification(self, price, destination, iata, from_date, to_date): 
         return f'Low price alert! Only {price}€ to fly from Barcelona-BCN to {destination}-{iata}, from {from_date} to {to_date}'
@@ -19,7 +19,7 @@ class NotificationManager:
         message = self.client.messages.create(
             body=text, 
             from_=self.number, 
-            to='+34698956127'
+            to=os.environ['PHONE_NUMBER']
         )
         return message.status
 

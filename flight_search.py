@@ -1,9 +1,10 @@
+import os 
 import requests
 
 class FlightSearch:
     
     def __init__(self):
-        self.api_key = 'eQ5wocjCwEWaJpSXUqufYy00HOURLQF_'
+        self.api_key = os.environ['KIWI_API_KEY']
         self.endpoint = 'https://tequila-api.kiwi.com'
         self.search = '/v2/search'
         self.location_search = '/locations/query'

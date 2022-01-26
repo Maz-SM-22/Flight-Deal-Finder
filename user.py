@@ -1,11 +1,12 @@
+import os 
 import requests
 
 class User: 
 
     def __init__(self, name: str, surname: str, email: str):
-        self.auth_token = "Bearer wDNR2LDl9FKzbVTJyPdSXr8JbcBavox1cDr5RbNa6N"
+        self.auth_token = os.environ['SHEETY_AUTH_TOKEN']
         self.headers = {"Authorization": self.auth_token, "Content-Type": "application/json"}
-        self.endpoint = 'https://api.sheety.co/8682e61342225b4b2474a915f342cf1d/flightDeals/users'
+        self.endpoint = os.environ['SHEETY_FLIGHT_URL']
         self.name = name
         self.surname = surname
         self.email = email 

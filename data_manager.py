@@ -1,11 +1,12 @@
+import os
 import requests 
 
 class DataManager:
     
     def __init__(self):
-        self.auth_token = 'Bearer wDNR2LDl9FKzbVTJyPdSXr8JbcBavox1cDr5RbNa6N'
+        self.auth_token = os.environ['SHEETY_AUTH_TOKEN']
         self.headers = {'Authorization': self.auth_token}
-        self.endpoint = 'https://api.sheety.co/8682e61342225b4b2474a915f342cf1d/flightDeals/prices'
+        self.endpoint = os.environ['SHEETY_PRICE_URL']
         self.data = {}
 
     def read_rows(self): 
